@@ -1,0 +1,20 @@
+{
+  "name": "facebook",
+  "version": "1.0.0",
+  "description": "fb page fetch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "al-maamoon rasool abdali",
+  "license": "ISC",
+"dependencies": {
+    "body-parser": "^1.15.2",
+    "ect": "^0.5.9",
+    "express": "^4.14.0",
+    "express-formidable": "^1.0.0",
+    "request": "^2.76.0",
+    "underscore": "^1.8.3",
+    "validator": "^6.1.0"
+  }
+}
