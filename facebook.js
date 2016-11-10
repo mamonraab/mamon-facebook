@@ -56,25 +56,31 @@ app.get('/fb2', function(input, output) {
 app.get('/', function(input, output) {
     //output.header("Content-Type", "application/json; charset=utf-8");
     var all = {
+      obj : {
         feed: null,
         slide: null,
         cover: null
-
+}
     };
-    output.header("Content-Type", "application/json; charset=utf-8");
+  //  output.header("Content-Type", "application/json; charset=utf-8");
 
     mamonfetcher.fetchfb(url + query + token).then(function(data) {
         var jsonObject = JSON.parse(data);
-        all.feed = jsonObject.feed;
-        mamonfetcher.fetchfb(url + "369158126764881?fields=photos.limit(10){images}" + token).then(function(data) {
+        all.obj.feed = jsonObject.feed;
+        mamonfetcher.fetchfb(url + "369158126764881?fields=photos.limit(10){permalink_url,images}" + token).then(function(data) {
             var jsonObject = JSON.parse(data);
-            all.slide = jsonObject.photos;
+            all.obj.slide = jsonObject.photos;
 
 
-            mamonfetcher.fetchfb(url + "202409816773047?fields=picture.height(1080)" + token).then(function(data) {
+            mamonfetcher.fetchfb(url + "202409816773047?fields=cover" + token).then(function(data) {
                 var jsonObject = JSON.parse(data);
-                all.cover = jsonObject.picture.data;
-                output.json(all);
+                all.obj.cover = jsonObject.cover;
+              //  output.json(all.obj.feed.data);
+
+              console.log(all.obj);
+              output.render('index',all.obj);
+
+
 
             }, function(eror) {
                 return output.json({ "error": "page problem" });
@@ -99,7 +105,6 @@ app.get('/', function(input, output) {
 });
 
 app.get('/onepage', function(req, res) {
-
 
 
 

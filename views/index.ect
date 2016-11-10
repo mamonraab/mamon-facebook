@@ -29,15 +29,15 @@
 							  <li><a href="#home">Home</a></li>
 							  <li><a href="#about">About Us</a></li>
 							  <li><a href="#portfolio">Portfolio</a></li>
-							  <li><a href="#features">Features</a></li>				                                                                  								  
+							  <li><a href="#features">Features</a></li>
 							  <li><a href="#contact">Contact</a></li>
 						</ul>
 					</div>
-					<!-- /.Navbar-collapse -->		 
+					<!-- /.Navbar-collapse -->
 			</div>
-		</div>		
+		</div>
 	</nav>
-   
+
     <div id="home">
 		<div class="slider">
 			<div id="about-slider">
@@ -57,41 +57,44 @@
 
 
 <div class="item">
-<img src="<%- link.full_picture %>" class="img-responsive" alt=""> 
+<img src="<%- link.images[0].source %>" class="img-responsive" alt="">
 						</div>
 
 
 
 <% end %>
 
-<% if @data?.length : %>
+<% if @slide.data?.length : %>
 					<div class="carousel-inner">
 
 <div class="item active">
-<img height="600px" src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/10430920_202410070106355_5486246071124744060_n.jpg?oh=751216f212b213ee142f27e8295fe47a&oe=58A0AD94" class="img-responsive" alt=""> 
+<img height="600px" src="<%- @cover.source %>" class="img-responsive" alt="">
 						</div>
 
 
-        <% for link in @data : %>
+        <% for link in @slide.data : %>
             <%- linkHelper link %>
         <% end %>
 </div>
 <% else : %>
+
+
+
     					<div class="carousel-inner">
 
 					   <div class="item">
-							<img src="images/slide2.jpg" class="img-responsive" alt=""> 
-					   </div> 
+							<img src="images/slide2.jpg" class="img-responsive" alt="">
+					   </div>
 
 
 					   <div class="item">
-							<img src="images/slide3.jpg" class="img-responsive" alt=""> 
-					   </div> 
+							<img src="images/slide3.jpg" class="img-responsive" alt="">
+					   </div>
 
 </div>
 <% end %>
 
-						
+
 
 
 
@@ -99,33 +102,34 @@
 
 
 					<a class="left carousel-control hidden-xs" href="#carousel-slider" data-slide="prev">
-						<i class="fa fa-angle-left"></i> 
+						<i class="fa fa-angle-left"></i>
 					</a>
-					
+
 					<a class=" right carousel-control hidden-xs"href="#carousel-slider" data-slide="next">
-						<i class="fa fa-angle-right"></i> 
+						<i class="fa fa-angle-right"></i>
 					</a>
 				</div> <!--/#carousel-slider-->
 			</div><!--/#about-slider-->
 		</div>
 	</div>
-   
+
 	<section id="about">
 		<div class="container">
 			<div class="center">
 				<div class="col-md-6 col-md-offset-3">
-					<h2>About Us</h2>
-					<hr>					
-					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</p>
+					<h2>اخبار المديرية</h2>
+					<hr>
 				</div>
 			</div>
 		</div>
-	
+
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 wow fadeInRight">
-					<img src="images/1.png" class="img-responsive" />
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni autem minus sint, commodi.</p>
+					<img src="<%- @feed.data[0].full_picture %>" class="img-responsive" />
+					<p class="msg1">
+<%- @feed.data[0].message %>
+          </p>
 
                 </div><!--/.col-sm-6-->
 
@@ -135,9 +139,13 @@
                           <div class="panel panel-default">
                             <div class="panel-heading active">
                               <h3 class="panel-title">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1">
-                                  Web Design
+                                <a  class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1">
+
                                   <i class="fa fa-angle-right pull-right"></i>
+                                    <div class="mamon1" ><%- @feed.data[1].message %></div>
+
+
+
                                 </a>
                               </h3>
                             </div>
@@ -146,11 +154,11 @@
                               <div class="panel-body">
                                   <div class="media accordion-inner">
                                         <div class="pull-left">
-                                            <img class="img-responsive" src="images/accordion1.png">
+                                            <img style="max-width:250px;" class="img-responsive" src="<%- @feed.data[1].full_picture %>">
                                         </div>
                                         <div class="media-body">
-                                             <h4>Adipisicing elit</h4>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+                                             <h4></h4>
+                                             <p><%- @feed.data[1].message %></p>
                                         </div>
                                   </div>
                               </div>
@@ -171,7 +179,7 @@
 									<p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
 									3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
 									Brunch 3 wolf moon tempor.<br>
-									
+
 									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
 									non cupidatat skateboard dolor brunch.</p>
 								</div>
@@ -192,7 +200,7 @@
                                 <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
 								3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
 								Brunch 3 wolf moon tempor.<br>
-								
+
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
 								non cupidatat skateboard dolor brunch.</p>
                               </div>
@@ -213,7 +221,7 @@
 								   <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
 									3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
 									Brunch 3 wolf moon tempor.<br>
-									
+
 									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
 									non cupidatat skateboard dolor brunch.</p>
 								</div>
@@ -226,20 +234,20 @@
             </div><!--/.row-->
         </div><!--/.container-->
     </section><!--/#about-->
-   
+
 	<section id="portfolio">
 		<div class="container">
 			<div class="center">
 				<div class="col-md-6 col-md-offset-3">
 					<h2>Portfolio</h2>
-					<hr>					
+					<hr>
 					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</p>
 				</div>
 			</div>
 		</div>
-	
+
         <div class="container">
-			<div class="col-lg-12">		
+			<div class="col-lg-12">
 				<ul class="portfolio-filter text-center">
 					<li><a class="btn btn-default active" href="#" data-filter="*">All Works</a></li>
 					<li><a class="btn btn-default" href="#" data-filter=".bootstrap">Creative</a></li>
@@ -257,7 +265,7 @@
 										<h3><a href="#">Business theme</a></h3>
 										<p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
 										<a class="preview" href="images/portfolio/full/item1.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
-									</div> 
+									</div>
 								</div>
 							</div>
 						</div><!--/.portfolio-item-->
@@ -270,9 +278,9 @@
 										<h3><a href="#">Business theme</a></h3>
 										<p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
 										<a class="preview" href="images/portfolio/full/item2.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
-									</div> 
+									</div>
 								</div>
-							</div>          
+							</div>
 						</div><!--/.portfolio-item-->
 
 						<div class="portfolio-item bootstrap wordpress col-xs-12 col-sm-4 col-md-3">
@@ -283,9 +291,9 @@
 										<h3><a href="#">Business theme</a></h3>
 										<p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
 										<a class="preview" href="images/portfolio/full/item3.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
-									</div> 
+									</div>
 								</div>
-							</div>        
+							</div>
 						</div><!--/.portfolio-item-->
 
 						<div class="portfolio-item joomla wordpress apps col-xs-12 col-sm-4 col-md-3">
@@ -296,11 +304,11 @@
 										<h3><a href="#">Business theme</a></h3>
 										<p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
 										<a class="preview" href="images/portfolio/full/item4.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
-									</div> 
+									</div>
 								</div>
-							</div>           
+							</div>
 						</div><!--/.portfolio-item-->
-			  
+
 						<div class="portfolio-item joomla html bootstrap col-xs-12 col-sm-4 col-md-3">
 							<div class="recent-work-wrap">
 								<img class="img-responsive" src="images/portfolio/recent/item5.png" alt="">
@@ -309,9 +317,9 @@
 										<h3><a href="#">Business theme</a></h3>
 										<p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
 										<a class="preview" href="images/portfolio/full/item5.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
-									</div> 
+									</div>
 								</div>
-							</div>      
+							</div>
 						</div><!--/.portfolio-item-->
 
 						<div class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3">
@@ -322,9 +330,9 @@
 										<h3><a href="#">Business theme</a></h3>
 										<p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
 										<a class="preview" href="images/portfolio/full/item6.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
-									</div> 
+									</div>
 								</div>
-							</div>         
+							</div>
 						</div><!--/.portfolio-item-->
 
 						<div class="portfolio-item wordpress html col-xs-12 col-sm-4 col-md-3">
@@ -335,9 +343,9 @@
 										<h3><a href="#">Business theme</a></h3>
 										<p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
 										<a class="preview" href="images/portfolio/full/item7.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
-									</div> 
+									</div>
 								</div>
-							</div>          
+							</div>
 						</div><!--/.portfolio-item-->
 
 						<div class="portfolio-item wordpress html bootstrap col-xs-12 col-sm-4 col-md-3">
@@ -348,41 +356,41 @@
 										<h3><a href="#">Business theme</a></h3>
 										<p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
 										<a class="preview" href="images/portfolio/full/item8.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
-									</div> 
+									</div>
 								</div>
-							</div>          
+							</div>
 						</div><!--/.portfolio-item-->
 					</div>
 				</div>
 			</div>
 		</div>
     </section><!--/#portfolio-item-->
-	
+
 	<section id="features">
 		<div class="container">
 			<div class="row">
 				<div class="center">
 					<div class="col-md-6 col-md-offset-3">
 						<h2>Features</h2>
-						<hr>					
+						<hr>
 						<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</p>
 					</div>
 				</div>
-				
+
 				<div class="col-md-4 wow fadeInLeft">
 					<h3>Responsive</h3>
 					<img src="images/portfolio/recent/item4.png" alt="">
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
 					non cupidatat skateboard dolor brunch.</p>
 				</div>
-				
+
 				<div class="col-md-4 wow fadeInUp">
 					<h3>Web Design</h3>
 					<img src="images/portfolio/recent/item5.png" alt="">
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
 					non cupidatat skateboard dolor brunch.</p>
 				</div>
-				
+
 				<div class="col-md-4 wow fadeInRight">
 					<h3>Easy Customize</h3>
 					<img src="images/portfolio/recent/item6.png" alt="">
@@ -390,21 +398,21 @@
 					non cupidatat skateboard dolor brunch.</p>
 				</div>
 			</div>
-		</div>		
+		</div>
 	</section>
-	
-	
+
+
 		<div class="map">
 			<div id="google-map" data-latitude="40.713732" data-longitude="-74.0092704"></div>
 		</div>
 	<section id="contact">
 		<div class="contact-page">
 			<div class="container">
-				<div class="center">        
-					<h2>Contact Us</h2>						
-				</div> 
-				<div class="row contact-wrap"> 	
-				    <div class="col-md-8 col-md-offset-2">	
+				<div class="center">
+					<h2>Contact Us</h2>
+				</div>
+				<div class="row contact-wrap">
+				    <div class="col-md-8 col-md-offset-2">
                         <div id="sendmessage">Your message has been sent. Thank you!</div>
                         <div id="errormessage"></div>
                         <form action="" method="post" role="form" class="contactForm">
@@ -424,15 +432,15 @@
                                 <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                                 <div class="validation"></div>
                             </div>
-                            
+
                             <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Send Message</button></div>
-                        </form>			
-                    </div>	
+                        </form>
+                    </div>
 				</div><!--/.row-->
 			</div><!--/.container-->
-		</div><!--/#contact-page-->		
+		</div><!--/#contact-page-->
 	</section>
-	
+
 	<footer id="footer" class="midnight-blue">
         <div class="container">
             <div class="row">
@@ -442,8 +450,8 @@
 					</div>
                     &copy; OnePage Theme. All Rights Reserved.
                     <div class="credits">
-                        <!-- 
-                            All the links in the footer should remain intact. 
+                        <!--
+                            All the links in the footer should remain intact.
                             You can delete the links only if you purchased the pro version.
                             Licensing information: https://bootstrapmade.com/license/
                             Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=OnePage
@@ -451,14 +459,14 @@
                         <a href="https://bootstrapmade.com/">Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
                     </div>
                 </div>
-				
-                <div class="top-bar">			
+
+                <div class="top-bar">
 					<div class="col-lg-12">
 					   <div class="social">
 							<ul class="social-share">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li> 
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
 								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
 								<li><a href="#"><i class="fa fa-skype"></i></a></li>
 							</ul>
@@ -468,19 +476,34 @@
 			</div>
 		</div>
     </footer><!--/#footer-->
-	
-	
+
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="js/jquery.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/jquery.isotope.min.js"></script> 
+    <script src="js/jquery.isotope.min.js"></script>
 	<script src="js/wow.min.js"></script>
-	<script src="js/jquery.easing.min.js"></script>	
+	<script src="js/jquery.easing.min.js"></script>
     <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
 	<script src="js/main.js"></script>
     <script src="contactform/contactform.js"></script>
-    
+
+    <script>
+        $(document).ready(function() {
+
+        var list = ["msg1","mamon1"];
+        for (var i = 0 ; i < list.length; i++){
+            var elem = $("."+list[i]);
+            if(elem){
+                if (elem.text().length > 10)
+                        elem.text(elem.text().substr(0,60))
+            }
+
+}
+
+        });
+        </script>
 </body>
 </html>
