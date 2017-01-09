@@ -59,7 +59,8 @@ app.get('/', function(input, output) {
       obj : {
         feed: null,
         slide: null,
-        cover: null
+        cover: null,
+	video:null
 }
     };
   //  output.header("Content-Type", "application/json; charset=utf-8");
@@ -71,18 +72,20 @@ app.get('/', function(input, output) {
             var jsonObject = JSON.parse(data);
             all.obj.slide = jsonObject.photos;
 
+      mamonfetcher.fetchfb(url + "202409816773047?fields=videos.limit(6)%7Bdescription%2Cpermalink_url%7D" + token).then(function(data) {
+            var jsonObject2 = JSON.parse(data);
+            all.obj.video = jsonObject2.videos;
+
+         console.log(all.obj.video.data);
 
             mamonfetcher.fetchfb(url + "202409816773047?fields=cover" + token).then(function(data) {
                 var jsonObject = JSON.parse(data);
                 all.obj.cover = jsonObject.cover;
               //  output.json(all.obj.feed.data);
 
-              console.log(all.obj);
+              //console.log(all.obj);
               output.render('index',all.obj);
-
-
-
-            }, function(eror) {
+}, function(eror) {
                 return output.json({ "error": "page problem" });
 
             });
@@ -90,6 +93,11 @@ app.get('/', function(input, output) {
 
         }, function(eror) {
             return output.json({ "error": "page problem" });
+
+        });
+
+ }, function(eror) {
+            return output.json({ "error": "video problem" });
 
         });
     }, function(eror) {
@@ -102,7 +110,10 @@ app.get('/', function(input, output) {
 
 
 
-});
+}
+
+
+);
 
 app.get('/onepage', function(req, res) {
 
