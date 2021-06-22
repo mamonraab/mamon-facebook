@@ -9,7 +9,7 @@ var port = process.env.PORT || 3000;
 var ECT = require('ect');
 var ectRenderer = ECT({ watch: true, root: __dirname + '/views', ext: '.ect' });
 var url = "https://graph.facebook.com/v2.8/";
-var query = "202409816773047?fields=feed.limit(10)%7Bfull_picture%2Cmessage%2Ccreated_time%7D";
+var query = " ";
 var token = require('./config.js');
 var path = require('path');
 var mamonfetcher = require('./fb-func');
@@ -41,7 +41,7 @@ app.get('/fb', function(input, output) {
 app.get('/fb2', function(input, output) {
     //output.header("Content-Type", "application/json; charset=utf-8");
 
-    var url = "https://graph.facebook.com/v2.8/202409816773047?fields=feed.limit(10)%7Bfull_picture%2Cmessage%2Ccreated_time%7D&access_token=742912495847708|R7_vOrPKm34iLPAn7-eKq5sWBNc";
+    var url = "https://graph.facebook.com/v2.8/202409816773047?fields=";
     request(url, function(error, response, body) {
         var jsonObject = JSON.parse(body);
 
@@ -68,17 +68,17 @@ app.get('/', function(input, output) {
     mamonfetcher.fetchfb(url + query + token).then(function(data) {
         var jsonObject = JSON.parse(data);
         all.obj.feed = jsonObject.feed;
-        mamonfetcher.fetchfb(url + "369158126764881?fields=photos.limit(10){permalink_url,images}" + token).then(function(data) {
+        mamonfetcher.fetchfb(url + "364881?fields=photos.limit(10){permalink_url,images}" + token).then(function(data) {
             var jsonObject = JSON.parse(data);
             all.obj.slide = jsonObject.photos;
 
-      mamonfetcher.fetchfb(url + "202409816773047?fields=videos.limit(6)%7Bdescription%2Cpermalink_url%7D" + token).then(function(data) {
+      mamonfetcher.fetchfb(url + "2073047?fields=videos.limit(6)%7Bdescription%2Cpermalink_url%7D" + token).then(function(data) {
             var jsonObject2 = JSON.parse(data);
             all.obj.video = jsonObject2.videos;
 
          console.log(all.obj.video.data);
 
-            mamonfetcher.fetchfb(url + "202409816773047?fields=cover" + token).then(function(data) {
+            mamonfetcher.fetchfb(url + "773047?fields=cover" + token).then(function(data) {
                 var jsonObject = JSON.parse(data);
                 all.obj.cover = jsonObject.cover;
               //  output.json(all.obj.feed.data);
